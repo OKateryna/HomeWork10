@@ -1,0 +1,28 @@
+* {
+    font-family: 'Bitter', serif;
+}
+
+.card-header-color{
+    background-color: #1781e3;
+}
+
+.card-header-color{
+    background-color: #1781e3;
+}
+.btn-info{
+    background-color:transparent;
+    border: none;
+    color:#939ba5   ;
+}
+
+.btn-info:hover {
+    background:none;color:inherit
+}
+
+.card-width{
+   min-width: 20%;
+}
+
+.required-sign{
+    color: #d82522;
+}

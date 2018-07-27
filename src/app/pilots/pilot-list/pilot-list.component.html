@@ -1,0 +1,17 @@
+<div class="offset-md-2 col-md-10">
+  <h2>Pilots</h2>
+  <div class="row">
+    <div class="card" style="width: 18rem;margin-left:20px;" *ngFor="let pilot of Pilots">
+      <div class="card-body">
+          <h5 class="card-title">Pilot id: {{pilot.id}}</h5>
+          <h5 class="card-title">First name: {{pilot.firstName}}</h5>
+          <h5 class="card-title">Second name: {{pilot.secondName}}</h5>
+          <h5 class="card-title mb-2 text-muted">Birth date: {{pilot.birthDate | date:'medium'}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Experience: {{pilot.experience}}</h6>
+          <input type="submit" class="btn-success btn ml-1" value="Create" (click)="createPilot()" />
+          <input type="submit" class="btn-primary btn ml-1" value="Update" (click)="updatePilot(pilot.id)" />
+          <input type="submit" class="btn-secondary btn ml-1" value="Delete" (click)="deletePilot(pilot.id)" />
+      </div>
+    </div>
+  </div>
+</div>

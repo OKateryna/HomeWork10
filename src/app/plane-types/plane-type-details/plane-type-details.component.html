@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <h1>Plane type details</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Plane type Id: {{planeType?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        Model: 
+        <input class="form-control" 
+        value="{{planeType?.planeModel}}" 
+        [disabled]="isUpdate"
+        placeholder="{{planeType?.planeModel}}"
+        name="planeModel" 
+        [(ngModel)]="planeModel" 
+        minlength="4" 
+        required 
+        #inputModel="ngModel"/>
+    </div>
+    <div *ngIf="inputModel.invalid && (inputModel.dirty || inputModel.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Model must be at least 1 character long!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Count of seats: 
+        <input class="form-control" 
+        name="placesAmount" value="{{planeType?.placesAmount}}" 
+        [disabled]="isUpdate" 
+        placeholder="{{planeType?.placesAmount}}" 
+        [(ngModel)]="placesAmount" 
+        maxlength="3"
+        pattern="[1-9]{1}[0-9]+" 
+        required 
+        #inputSeats="ngModel"/> 
+    </div>
+    <div *ngIf="inputSeats.invalid && (inputSeats.dirty || inputSeats.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Seat count should be greater than 1!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Carrying capacity: 
+        <input class="form-control" 
+        value="{{planeType?.carryingCapacity}}" 
+        [disabled]="isUpdate"
+        placeholder="{{planeType?.carryingCapacity}}"
+        name="capacity" 
+        [(ngModel)]="capacity"
+        minlength="4" 
+        maxlength="6" 
+        pattern="[1-9]{1}[0-9]+"
+        required 
+        #inputCapacity="ngModel"/>
+    </div>
+    <div *ngIf="inputCapacity.invalid && (inputCapacity.dirty || inputCapacity.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Capacity has to be greater than 0!
+        </div>
+    </div>
+    <div class="card-heading p-2" [hidden]="isUpdate">
+        Enter update data and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" class="btn btn-outline-secondary" (click)="updatePlaneType(planeModel,placesAmount,capacity)">Update</button>
+    </div>
+</div>

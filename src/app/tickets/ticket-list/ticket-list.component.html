@@ -1,0 +1,56 @@
+ <div class="row justify-content-center">
+    <div > <h1>Tickets</h1></div> 
+ </div>
+ <div class="row justify-content-center mb-5">
+    <div ><button type="button"  class="btn btn-success btn-lg"  data-toggle="modal" data-target="#modalCreate" >Create</button></div>
+ </div> 
+<div class="row justify-content-center ">
+<div class="card m-2 card-width" *ngFor="let t of Tickets">
+  <div class="card-header card-header-color text-white ">Ticket Id : {{t.id}}
+    <a class="btn-info float-right"  [routerLink]="['/tickets', t.id]"><i class="fas fa-question"></i></a>
+  </div>
+  <div class="card-body">
+    <div class="card-subtitle mb-2 text-muted">Price : {{t.price}}</div>
+    <div class="card-subtitle mb-2 text-muted">Number : {{t.flight?.number}}</div>
+    <div class="justify-content-center">
+    <button type="button" class="btn btn-primary " [routerLink]="['/tickets', t.id]" >Update</button>
+    <button type="button" class="btn btn-secondary ml-1" (click)="deleteTicket(t.id)">Delete</button>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new object</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Input ticket number </label>
+                <input class="form-control" name="title" [(ngModel)]="number" minlength="4" required #inputNumber="ngModel"/>
+            </div>
+            <div *ngIf="inputNumber.invalid && (inputNumber.dirty || inputNumber.touched)" class="alert alert-danger">
+               <div>
+                   Length has to be greater than 0!
+               </div>
+            </div>
+            <div class="form-group">
+                <label>Input price </label>
+                <input  class="form-control" name="price" [(ngModel)]="price" required maxlength="4" pattern="[1-9]{1}[0-9]+" #inputPrice="ngModel"/>
+            </div>
+            <div *ngIf="inputPrice.invalid && (inputPrice.dirty || inputPrice.touched)" class="alert alert-danger">
+                <div>
+                    Price have to be between 10 and 9999$!
+                </div>
+             </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="inputNumber.invalid"  class="btn btn-primary" data-dismiss="modal" (click)="createTicket(number, price)">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>

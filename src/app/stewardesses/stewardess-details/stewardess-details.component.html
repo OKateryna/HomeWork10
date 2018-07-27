@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <h1>Stewardess Info</h1>
+</div>
+<div class="card mx-auto card-width">
+    <div class="card-heading p-2"><h4>Stewardess id : {{stewardess?.id}}</h4></div>
+    <hr>
+    <div class="card-heading p-2">
+        First Name: <input class="form-control" 
+        value="{{stewardess?.firstName}}" 
+        [disabled]="isUpdate"
+        placeholder="{{stewardess?.firstName}}"
+        name="firstName" 
+        [(ngModel)]="firstName" 
+        minlength="4" 
+        required 
+        #inputFirstName="ngModel"/>
+    </div>
+    <div *ngIf="inputFirstName.invalid && (inputFirstName.dirty || inputFirstName.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length has to be greater than 0!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Second Name: <input class="form-control" 
+        name="secondName" value="{{stewardess?.secondName}}" 
+        [disabled]="isUpdate" 
+        placeholder="{{stewardess?.secondName}}" 
+        [(ngModel)]="secondName" 
+        minlength="4" 
+        required 
+        #inputsecondName="ngModel"/> 
+    </div>
+    <div *ngIf="inputsecondName.invalid && (inputsecondName.dirty || inputsecondName.touched)" class="alert alert-danger card-heading m-2">
+        <div>
+            Length has to be greater than 0!
+        </div>
+    </div>
+    <div class="card-heading p-2">
+        Date of birth: <input class="form-control" 
+        name="bith" value="{{stewardess?.birthDate | date:'medium'}}" 
+        [disabled]="isUpdate" 
+        placeholder="{{stewardess?.birthDate}}" 
+        [(ngModel)]="birth" 
+        required 
+        #inputBirthDate="ngModel"/> 
+    </div>
+    <div class="card-heading p-2" [hidden]="isUpdate">
+        Enter update data and press "Update"
+    </div>
+    <div class="card-heading p-2 mx-auto">
+        <button type="button" class="btn btn-outline-secondary" (click)="updateStewardess(firstName,secondName,birth)">Update</button>
+    </div>
+</div>

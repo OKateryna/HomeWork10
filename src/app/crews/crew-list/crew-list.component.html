@@ -1,0 +1,19 @@
+<div class="offset-md-2 col-md-10">
+  <h2>Crew</h2>
+  <div class="row">
+    <div class="card" style="width: 18rem;margin-left:20px;" *ngFor="let crew of Crews">
+      <div class="card-body">
+        <h5 class="card-title">Crew Name: {{crew.name}}</h5>
+        <h5 class="card-title">Captain pilot name: {{crew.pilot?.firstName}} {{crew.pilot?.secondName}}</h5>
+        <h5 [style.visibility]="crew.stewardesses.length > 0 ? 'visible' : 'hidden'" class="card-title">Stewardesses: </h5>
+        <div class="card" *ngFor="let stewardess of crew.stewardesses" class="card-subtitle mb-2 text-muted">
+          <h6>{{stewardess.firstName}} {{stewardess.secondName}}</h6>
+        </div>
+
+        <input type="submit" class="btn-success btn ml-1" value="Create" (click)="createCrew()" />
+        <input type="submit" class="btn-primary btn ml-1" value="Update" (click)="updateCrew(crew.id)" />
+        <input type="submit" class="btn-secondary btn ml-1" value="Delete" (click)="deleteCrew(crew.id)" />
+      </div>
+    </div>
+  </div>
+</div>

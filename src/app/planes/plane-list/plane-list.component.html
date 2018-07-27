@@ -1,0 +1,15 @@
+    <div class="offset-md-2 col-md-10">
+      <h2>Planes</h2>
+      <div class="card" style="width: 18rem;margin-top:20px;" *ngFor="let plane of Planes">
+        <div class="card-body">
+            <h5 class="card-title">Plane Id: {{plane.id}}</h5>
+            <h5 class="card-title">Name: {{plane.planeName}}</h5>
+            <h5 class="card-title">Plane model: {{plane.planeType.planeModel}}</h5>
+            <h5 class="card-title mb-2 text-muted">Manufacturing date: {{plane.manufectureDate | date:'medium'}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Life span (years): {{plane.lifeSpan}}</h6>
+            <input type="submit" class="btn-success btn ml-1" value="Create" (click)="createPlane()" />
+            <input type="submit" class="btn-primary btn ml-1" value="Update" (click)="updatePlane(plane.id)" />
+            <input type="submit" class="btn-secondary btn ml-1" value="Delete" (click)="deletePlane(plane.id)" />
+        </div>
+      </div>
+    </div>

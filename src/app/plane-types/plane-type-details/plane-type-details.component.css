@@ -1,0 +1,15 @@
+@media (max-width: 600px) { 
+    .card-width{
+        max-width: 100%;
+    }
+ }
+
+@media (max-width: 780px) {  
+    .card-width{
+        max-width: 75%;
+    }
+}
+
+.card-width{
+    max-width: 50%;
+}

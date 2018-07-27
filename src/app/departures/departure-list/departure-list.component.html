@@ -1,0 +1,17 @@
+<div class="offset-md-2 col-md-10">
+  <h2>Departures</h2>
+  <div class="row">
+  <div class="card" style="width: 18rem;margin-top:20px;" *ngFor="let departure of Departures">
+    <div class="card-body">
+      <h5 class="card-title">Departure Id: {{departure.id}}</h5>
+      <h5 class="card-title">Date of departure: {{departure.departureDate  | date:'medium'}}</h5>
+      <h5 class="card-title">Flight number: {{departure.flight?.number}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Crew name: {{departure.crew?.name}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Plane: {{departure.plane?.planeName}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Plane model: {{departure.plane?.planeType?.planeModel}}</h6>
+      <input type="submit" class="btn-success btn ml-1" value="Create" (click)="createDeparture()" />
+      <input type="submit" class="btn-primary btn ml-1" value="Update" (click)="updateDeparture(departure.id)" />
+      <input type="submit" class="btn-secondary btn ml-1" value="Delete" (click)="deleteDeparture(departure.id)" />
+    </div>
+  </div>
+  </div>
